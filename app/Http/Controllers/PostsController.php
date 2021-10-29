@@ -9,14 +9,19 @@ class PostsController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index(){
-        $users = auth()->user()->following()->pluck('profiles.user_id');
+        //$users = auth()->user()->following()->pluck('profiles.user_id');
 
-        $posts = Post::whereIn('user_id', $users)->latest()->get();
+        //$users = auth()->user()->following()->pluck('profiles.user_id');
 
+        //$posts = Post::whereIn('user_id', $users)->latest()->limit(3)->get();
+
+        $posts = Post::latest()->limit(3)->get();
+
+        //return view('posts.index', compact('posts', 'allposts'));
         return view('posts.index', compact('posts'));
     }
 
@@ -24,10 +29,16 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+    public function show(Post $post){
+        
+        return view('posts.show', compact('post'));
+    }
+
     public function store(){
 
         $data = request()->validate([
             'caption' => 'required',
+            'title' => 'required',
             'image' => ['required', 'image'],
         ]);
 
@@ -35,6 +46,7 @@ class PostsController extends Controller
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
+            'title' => $data['title'],
             'image' => $imagePath,    
         ]);
 

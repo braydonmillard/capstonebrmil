@@ -15,17 +15,16 @@
                     <div class="pr-5"><strong>{{ $user->name }}</strong></div><br>
 
 
-                    <div class="pr-5"><strong>{{ Auth::user()->following->count() }}</strong> following</div><br>
-                    <div class="pr-5"><strong>{{ Auth::user()->followers }}</strong> followers</div><br>
 
+                    
 
 
 
                 </div>
+                <a href="/p/create">Add New Post</a>
 
-                @can('update', $user->profile)
-                    <a href="/p/create">Add New Post</a>
-                @endcan
+                <!--@can('update', $user->profile)
+                @endcan-->
 
             </div>
 
@@ -49,6 +48,8 @@
                 <a href="/p/{{ $post->id }}">
                     <img src="/storage/{{ $post->image }}" class="w-100">
                 </a>
+                <b>{{ $post->title }}</b> <br>                
+                {{ $post->caption }}
             </div>
         @endforeach
     </div>
