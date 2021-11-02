@@ -9,11 +9,11 @@
         <div class="col-8 offset-2">
 
             <div class="row">
-                <h1>Add New Post</h1>
+                <h1>Add New Recipe</h1>
             </div>
 
             <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label">Post Title</label>
+                            <label for="title" class="col-md-4 col-form-label">Recipe Title</label>
 
                                 <input id="title" 
                                 type="text" 
@@ -30,7 +30,7 @@
                         </div>
 
             <div class="form-group row">
-                            <label for="caption" class="col-md-4 col-form-label">Post Caption</label>
+                            <label for="caption" class="col-md-4 col-form-label">Recipe Description</label>
 
                                 <input id="caption" 
                                 type="text" 
@@ -46,8 +46,27 @@
                                 @enderror
                         </div>
 
+                        <div class="form-group row">
+                            <label for="ingredients" class="col-md-4 col-form-label">Recipe Ingredients</label>
+
+                                <input id="ingredients" 
+                                type="text"
+                                placeholder="Enter an ingredient" 
+                                class="form-control @error('ingredients') is-invalid @enderror" 
+                                name="ingredients[]"
+                                value="{{ old('ingredients') }}" 
+                                autocomplete="ingredients" autofocus>
+                                <button name="add" id="add">Add Ingredient</button>
+
+                                @error('ingredients')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
                         <div class="row">
-                            <label for="image" class="col-md-4 col-form-label">Post Image</label>
+                            <label for="image" class="col-md-4 col-form-label">Recipe Image</label>
                             <input type="file" class="form-control-file" id="image" name="image">
 
                             @error('image')
@@ -64,3 +83,12 @@
     </form>
 </div>
 @endsection
+
+<script>
+$(document).ready(function(){
+    var i = 1;
+    $('#add').click(function(){
+        i++;
+    });
+});
+</script>
