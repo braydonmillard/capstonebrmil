@@ -10,35 +10,25 @@
                 <div class="d-flex align-items-center pb-3">
                     <div class="h4">{{ $user->username }}</div>
 
-                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button><br>
-
-                    <div class="pr-5"><strong>{{ $user->name }}</strong></div><br>
-
-
-
-                    
-
-
-
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
-                <a href="/p/create">Add New Post</a>
 
-                <!--@can('update', $user->profile)
-                @endcan-->
+                @can('update', $user->profile)
+                    <a href="/p/create">Add New Post</a>
+                @endcan
 
             </div>
-
-            @can('update', $user->profile)
-                <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endcan
 
             @can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             @endcan
 
             <div class="d-flex">
-
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
             </div>
+            <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
+            <div>{{ $user->profile->description }}</div>
+            <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
 
@@ -48,8 +38,6 @@
                 <a href="/p/{{ $post->id }}">
                     <img src="/storage/{{ $post->image }}" class="w-100">
                 </a>
-                <b>{{ $post->title }}</b> <br>                
-                {{ $post->caption }}
             </div>
         @endforeach
     </div>
