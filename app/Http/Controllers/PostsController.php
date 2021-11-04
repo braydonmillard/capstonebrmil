@@ -45,11 +45,13 @@ class PostsController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
+        //$imagePath = request('image')->store('uploads', 'public');
+
+        $image = request->file('image');
 
         //$image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
 
-        Image::make($imagePath->getRealPath())->fit(1200, 1200)->save( public_path("/storage/{$imagePath}"));
+        Image::make($image->getRealPath())->fit(1200, 1200)->save( public_path("/storage/{$image}"));
         //$image->save();
 
         auth()->user()->posts()->create([
@@ -57,7 +59,7 @@ class PostsController extends Controller
             'title' => $data['title'],
             'ingredients' => $data['ingredients'],
             'instructions' => $data['instructions'],
-            'image' => $imagePath,    
+            'image' => $image,    
         ]);
 
         return redirect('/profile/' . auth()->user()->id);
