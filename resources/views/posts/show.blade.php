@@ -25,7 +25,7 @@
                     <p>
                     <span class="font-weight-bold">
                     <h4>Ingredients</h4>
-                    {{ $post->title }}
+                    {{ $post->ingredients }}
                     </span> <br>
                         </a>
                     <h4>Directions</h4>

@@ -46,19 +46,34 @@
                                 @enderror
                         </div>
 
-                        <div class="form-group row">
+            <div class="form-group row">
                             <label for="ingredients" class="col-md-4 col-form-label">Recipe Ingredients</label>
 
                                 <input id="ingredients" 
-                                type="text"
-                                placeholder="Enter an ingredient" 
+                                type="text" 
                                 class="form-control @error('ingredients') is-invalid @enderror" 
-                                name="ingredients[]"
+                                name="ingredients"
                                 value="{{ old('ingredients') }}" 
                                 autocomplete="ingredients" autofocus>
-                                <button name="add" id="add">Add Ingredient</button>
 
                                 @error('ingredients')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+            <div class="form-group row">
+                            <label for="instructions" class="col-md-4 col-form-label">Recipe Instructions</label>
+
+                                <input id="instructions" 
+                                type="text" 
+                                class="form-control @error('instructions') is-invalid @enderror" 
+                                name="instructions"
+                                value="{{ old('instructions') }}" 
+                                autocomplete="instructions" autofocus>
+
+                                @error('instructions')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -83,12 +98,3 @@
     </form>
 </div>
 @endsection
-
-<script>
-$(document).ready(function(){
-    var i = 1;
-    $('#add').click(function(){
-        i++;
-    });
-});
-</script>
