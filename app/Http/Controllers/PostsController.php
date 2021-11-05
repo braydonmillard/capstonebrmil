@@ -47,7 +47,7 @@ class PostsController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
+        $imagePath = request('image')->store('uploads', 's3');
 
         //dd(storage_path("{$imagePath}"));
 /*
