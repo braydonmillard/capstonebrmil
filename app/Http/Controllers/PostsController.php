@@ -58,7 +58,7 @@ class PostsController extends Controller
             'url' => Storage::disk('s3')->url($imagePath)
         ]);*/
 
-        $image = Image::make(public_path("storage/{$imagePath}")->getRealPath());
+        $image = Image::make(public_path("storage/{$imagePath}"));
         //$img = Image::make($request->file('photo')->getRealPath());
 
         $image->save();
