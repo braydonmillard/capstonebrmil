@@ -47,7 +47,7 @@ class PostsController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        dd(config('filesystems.disks.s3.region'));
+        dd(env('AWS_DEFAULT_REGION'));
 
         $imagePath = request('image')->store('uploads', 's3');
 
