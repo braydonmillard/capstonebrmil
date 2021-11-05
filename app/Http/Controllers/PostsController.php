@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
+require('vendor/autoload.php');
+
+
 
 class PostsController extends Controller
 {
@@ -37,6 +40,13 @@ class PostsController extends Controller
 
     public function store(){
 
+        $s3 = new Aws\S3\S3Client([
+            'version'  => '2006-03-01',
+            'region'   => 'us-east-2',
+        ]);
+        $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+        
+        
         $data = request()->validate([
             'caption' => 'required',
             'title' => 'required',
