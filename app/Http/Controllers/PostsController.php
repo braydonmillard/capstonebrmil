@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
+
+require('vendor/autoload.php');
 
 
 class PostsController extends Controller
@@ -47,6 +48,7 @@ class PostsController extends Controller
             'image' => ['required', 'image'],
         ]);
 
+        dd(config('filesystems.disks.s3.region'));
         $imagePath = request('image')->store('uploads', 's3');
 
         //dd(storage_path("{$imagePath}"));
@@ -58,7 +60,7 @@ class PostsController extends Controller
             'url' => Storage::disk('s3')->url($imagePath)
         ]);*/
 
-        dd(public_path("storage/{$imagePath}"));
+        //dd(public_path("storage/{$imagePath}"));
 
         $image = Image::make(public_path("storage/{$imagePath}"));
         //$img = Image::make($request->file('photo')->getRealPath());
