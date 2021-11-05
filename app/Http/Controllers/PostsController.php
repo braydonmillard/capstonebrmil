@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
 
-require('vendor/autoload.php');
-// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-$s3 = new Aws\S3\S3Client([
-    'version'  => '2006-03-01',
-    'region'   => 'us-east-1',
-]);
-
 
 class PostsController extends Controller
 {
@@ -54,18 +47,18 @@ class PostsController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        $imagePath = request('image')->store('uploads', 's3');
+        $imagePath = request('image')->store('uploads', 'public');
 
         //dd(storage_path("{$imagePath}"));
-
+/*
         Storage::disk('s3')->setVisibility($imagePath, 'public');
 
         $image = Image::create([
             'filename' => basename($imagePath),
             'url' => Storage::disk('s3')->url($imagePath)
-        ]);
+        ]);*/
 
-        //$image = Image::make(storage_path("{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(storage_path("{$imagePath}"))->fit(1200, 1200);
         $image->save();
 
         auth()->user()->posts()->create([
