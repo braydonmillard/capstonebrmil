@@ -58,7 +58,7 @@ class PostsController extends Controller
         
         //dd($idk);
 
-        dd($imagePath);
+        //dd($imagePath);
         
         //Storage::disk('s3')->put($imagePath, file_get_contents($imagePath));
 
