@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
 
-require('vendor/autoload.php');
+require('../vendor/autoload.php');
 
 
 class PostsController extends Controller
