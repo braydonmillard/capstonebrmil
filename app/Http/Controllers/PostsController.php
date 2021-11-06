@@ -52,17 +52,17 @@ class PostsController extends Controller
         $imagePath = request('image')->store('uploads', 's3');
 
         //dd(storage_path("{$imagePath}"));
-/*
+
         Storage::disk('s3')->setVisibility($imagePath, 'public');
 
         $image = Image::create([
             'filename' => basename($imagePath),
             'url' => Storage::disk('s3')->url($imagePath)
-        ]);*/
+        ]);
 
         //dd(public_path("storage/{$imagePath}"));
 
-        $image = Image::make(public_path("storage/{$imagePath}"));
+        //$image = Image::make(public_path("storage/{$imagePath}"));
         //$img = Image::make($request->file('photo')->getRealPath());
 
         $image->save();
