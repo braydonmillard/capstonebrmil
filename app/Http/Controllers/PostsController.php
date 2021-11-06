@@ -60,6 +60,9 @@ class PostsController extends Controller
         
         Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
 
+
+        $contents = Storage::disk('s3')->get($filePath);        
+        dd($contents);
         //upload to s3 working but opening does not
         
         //dd(storage_path("{$imagePath}"));
