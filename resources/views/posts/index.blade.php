@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-6 offset-3">
                 <a href="/show/{{ $post->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-75">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-75">
                 </a>
             </div>
         </div>
