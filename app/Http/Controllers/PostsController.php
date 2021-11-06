@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
+use Storage;
 
 require('../vendor/autoload.php');
 
@@ -54,6 +55,8 @@ class PostsController extends Controller
         //dd(storage_path("{$imagePath}"));
 
         Storage::disk('s3')->setVisibility($imagePath, 'public');
+        Storage::disk('s3')->put ($filename, file_get_contents($imagePath));
+
 
         $image = Image::create([
             'filename' => basename($imagePath),
