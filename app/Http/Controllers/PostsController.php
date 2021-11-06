@@ -93,7 +93,7 @@ class PostsController extends Controller
             'title' => $data['title'],
             'ingredients' => $data['ingredients'],
             'instructions' => $data['instructions'],
-            'image' => $filePath,    
+            'image' => $imagePath,    
         ]);
 
         return redirect('/profile/' . auth()->user()->id);
