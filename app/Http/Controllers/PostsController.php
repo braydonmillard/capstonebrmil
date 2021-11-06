@@ -50,11 +50,19 @@ class PostsController extends Controller
         ]);
 
         //dd(config('filesystems.disks.s3.region'));
-        $imagePath = request('image')->store('uploads', 's3');
+        
+        //$imagePath = request('image')->store('uploads', 's3');
+
+        $imagePath = request('image');
+
+        $filePath = 'images/' . $imagePath->getClientOriginalName();
+
+        Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
+
 
         //dd(storage_path("{$imagePath}"));
 
-        Storage::disk('s3')->setVisibility($imagePath, 'public');
+        //Storage::disk('s3')->setVisibility($imagePath, 'public');
         
         //dd($idk);
 
@@ -62,18 +70,18 @@ class PostsController extends Controller
         
         //Storage::disk('s3')->put($imagePath, file_get_contents($imagePath));
 
-
+/*
         $image = Image::make([
             'filename' => basename($imagePath),
             'url' => Storage::disk('s3')->url($imagePath)
-        ]);
+        ]);*/
 
         //dd(public_path("storage/{$imagePath}"));
 
         //$image = Image::make(public_path("storage/{$imagePath}"));
-        //$img = Image::make($request->file('photo')->getRealPath());
+        //$image = Image::make($request->file('photo')->getRealPath());
 
-        $image->save();
+        //$image->save();
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
