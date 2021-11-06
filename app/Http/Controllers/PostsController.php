@@ -63,7 +63,7 @@ class PostsController extends Controller
         //Storage::disk('s3')->put($imagePath, file_get_contents($imagePath));
 
 
-        $image = Image::create([
+        $image = Image::make([
             'filename' => basename($imagePath),
             'url' => Storage::disk('s3')->url($imagePath)
         ]);
