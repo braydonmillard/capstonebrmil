@@ -61,7 +61,8 @@ class PostsController extends Controller
         Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
 
 
-        $contents = Storage::disk('s3')->get($filePath);        
+        //$contents = Storage::disk('s3')->get($filePath);        
+        dd($contents);
         //upload to s3 working but opening does not
         
         //dd(storage_path("{$imagePath}"));
@@ -92,7 +93,7 @@ class PostsController extends Controller
             'title' => $data['title'],
             'ingredients' => $data['ingredients'],
             'instructions' => $data['instructions'],
-            'image' => $contents,    
+            'image' => $filePath,    
         ]);
 
         return redirect('/profile/' . auth()->user()->id);
