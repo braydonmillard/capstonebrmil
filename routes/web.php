@@ -28,6 +28,8 @@ Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 Route::get('/show/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
+Route::get('/search', [App\Http\Controllers\PostsController::class, 'search']);
+
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');

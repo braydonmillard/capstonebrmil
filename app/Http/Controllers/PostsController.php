@@ -101,4 +101,13 @@ class PostsController extends Controller
 
         return redirect('/profile/' . auth()->user()->id);
     }
+
+    public function search(){
+        $search_text = $_GET['query'];
+
+        $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->get();
+
+        return view('posts.search',compact('posts'));
+    }
+
 }
