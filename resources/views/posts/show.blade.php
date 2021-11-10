@@ -20,6 +20,11 @@
                 </a>
             </div>
 
+            @if(Auth::check())
+            @if(auth()->user()->is_admin)
+                Feature Recipe
+            @endif
+            @endif
         <div class="row pt-2 pb-4">
             <div class="col-6 offset-0">
                 <div>
@@ -42,11 +47,6 @@
             </div>
         </div>
 
-        @if(Auth::check())
-            @if(auth()->user()->is_admin)
-                Hi admin
-            @endif
-        @endif
 
 
         <div class="row">
