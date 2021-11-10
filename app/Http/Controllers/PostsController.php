@@ -119,7 +119,7 @@ class PostsController extends Controller
 
         //return view('posts.show', compact('post'));
 
-        return Post::find($post);
+        return Post::find($post->id);
     }
 
 }
