@@ -32,11 +32,21 @@
                     <h4>Directions</h4>
                     {{ $post->instructions }} <br>
                     <h4>Reviews</h4>
+                    @if (empty($post->review->first()->comment))
+                    There are no reviews yet
+                    @else
                     {{$post->review->first()->comment}}
+                    @endif
                     </p>
                 </div>
             </div>
         </div>
+
+        @if(Auth::check())
+            @if(auth()->user()->is_admin)
+                Hi admin
+            @endif
+        @endif
 
 
         <div class="row">
