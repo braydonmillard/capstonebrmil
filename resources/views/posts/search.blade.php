@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 
+
+<h5>{{count($posts)}} recipes found for "{{$search_text}}":
+
+<div class="form-group col-6 offset-8">
+<form action="{{ url('/search') }}" type="get">
+<label for="sortBy">Sort by: </label>
+    <select name="sortBy" id="sortBy">
+     <option value="Best Match">Best Match (Default)</option>
+     <option value="Newest">Newest</option>
+     <option value="Most Popular">Most Popular</option>
+</select>
+<input type="submit" value="Sort">
+</form>
+</div>
+</h5>
 
 @foreach($posts as $post)
 
@@ -17,7 +33,9 @@
                 <div>
                     <p>
                     <span class="font-weight-bold">
+                    <a href="/show/{{ $post->id }}">
                     {{ $post->title }}
+                    </a>
                     </span> <br>
                     <i>{{ $post->caption }}</i> <br>
                     By  <a href="/profile/{{ $post->user->id }}">
@@ -29,5 +47,5 @@
         </div>
 
 @endforeach
-
+</div>
 @endsection

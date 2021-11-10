@@ -59,5 +59,11 @@
             <div class="col-12 d-flex justify-content-center">
             </div>
         </div>
+
+    @if(Auth::check())
+        @if(auth()->user()->is_admin)
+        Hi admin
+        @endif
+    @endif
 </div>
 @endsection

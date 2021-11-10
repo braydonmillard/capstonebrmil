@@ -6,7 +6,8 @@
 
         <div class="row">
             <div class="col-6 offset-0">
-            By {{ $post->user->username }} <br>
+            By <a href="/profile/{{ $post->user->id }}">
+            {{ $post->user->username }} </a> <br>
             {{ $post->caption }}
                 <a href="/p/{{ $post }}">
                 </a>
@@ -29,7 +30,9 @@
                     </span> <br>
                         </a>
                     <h4>Directions</h4>
-                    {{ $post->instructions }} Instructions go here
+                    {{ $post->instructions }} <br>
+                    <h4>Reviews</h4>
+                    {{$post->review->first()->comment}}
                     </p>
                 </div>
             </div>
