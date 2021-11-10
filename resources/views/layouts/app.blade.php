@@ -74,7 +74,7 @@
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item" href="/profile/{{ $post->user->id }}">
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">
                                         {{ __('Go to my profile') }}
                                     </a>
                                 </div>
