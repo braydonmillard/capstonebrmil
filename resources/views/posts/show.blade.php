@@ -22,7 +22,9 @@
 
             @if(Auth::check())
             @if(auth()->user()->is_admin)
+                <a href="/feature/{{ $post->id }}">
                 Feature Recipe
+                </a>
             @endif
             @endif
         <div class="row pt-2 pb-4">
