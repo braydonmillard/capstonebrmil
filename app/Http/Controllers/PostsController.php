@@ -115,9 +115,11 @@ class PostsController extends Controller
 
         //$posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->get();
 
-        $post->is_featured=1;
+        //$post->is_featured=1;
 
-        return view('posts.show', compact('post'));
+        //return view('posts.show', compact('post'));
+
+        return Post::find($post);
     }
 
 }
