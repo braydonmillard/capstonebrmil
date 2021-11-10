@@ -110,4 +110,14 @@ class PostsController extends Controller
         return view('posts.search',compact('posts', 'search_text'));
     }
 
+    public function feature(Post $post){
+        //$search_text = $_GET['query'];
+
+        //$posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->get();
+
+        $post->is_featured=1;
+
+        return view('posts.show', compact('post'));
+    }
+
 }
