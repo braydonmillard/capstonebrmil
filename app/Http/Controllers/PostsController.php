@@ -119,6 +119,10 @@ class PostsController extends Controller
 
         //return view('posts.show', compact('post'));
 
+        $myPost = Post::find($post->id);
+
+        $myPost->update(['is_featured' => 1]);
+
         return Post::find($post->id);
     }
 
