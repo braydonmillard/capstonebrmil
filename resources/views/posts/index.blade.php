@@ -30,7 +30,7 @@
 -->
     <h4>Featured recipes:</h4>
     @foreach($posts as $post)
-        @if($post->is_featured = 1)
+        @if($post->is_featured)
         <div class="row">
             <div class="col-6 offset-3">
                 <a href="/show/{{ $post->id }}">
