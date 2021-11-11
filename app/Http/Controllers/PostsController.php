@@ -110,6 +110,14 @@ class PostsController extends Controller
         return view('posts.search',compact('posts', 'search_text'));
     }
 
+    public function sort(String $searchText){
+        $search_text = $searchText;
+
+        $posts = Post::where('title', 'ILIKE', '%'.$search_text.'%')->latest()->get();
+
+        return view('posts.search',compact('posts', 'search_text'));
+    }
+
     public function feature(Post $post){
         //$search_text = $_GET['query'];
 

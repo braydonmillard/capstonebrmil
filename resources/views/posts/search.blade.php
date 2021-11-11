@@ -13,7 +13,7 @@
      <option value="Best Match">Best Match (Default)</option>
      <option value="Newest">Newest</option>
      <option value="Most Popular">Most Popular</option>
-</select>
+    </select>
 <input type="submit" value="Sort">
 </form>
 </div>

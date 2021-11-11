@@ -29,6 +29,8 @@ Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 Route::get('/show/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
 Route::get('/search', [App\Http\Controllers\PostsController::class, 'search']);
+Route::get('/sort', [App\Http\Controllers\PostsController::class, 'sort']);
+
 Route::get('/feature/{post}', [App\Http\Controllers\PostsController::class, 'feature']);
 
 
