@@ -102,10 +102,14 @@ class PostsController extends Controller
         return redirect('/profile/' . auth()->user()->id);
     }
 
-    public function search(){
+    public function search(Request $request){
         $search_text = $_GET['query'];
 
         $posts = Post::where('title', 'ILIKE', '%'.$search_text.'%')->get();
+
+        if ($request->sort == "post_latest"){
+            $posts->orderBy('id', 'desc');
+        }
 
         return view('posts.search',compact('posts', 'search_text'));
     }

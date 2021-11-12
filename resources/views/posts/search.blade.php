@@ -7,14 +7,14 @@
 <h5>{{count($posts)}} recipes found for "{{$search_text}}":
 
 <div class="form-group col-6 offset-8">
-<form action="{{ url('/sort') }}" type="get">
-<label for="sortBy">Sort by: </label>
-    <select name="sortBy" id="sortBy">
+<form action="{{ url('/search') }}" type="get">
+<label for="sort">Sort by: </label>
+    <select name="sort" id="sort">
      <option value="Best Match">Best Match (Default)</option>
-     <option value="Newest">Newest</option>
+     <option value="Newest" @if (request()->sort == "post_latest") selected @endif>Newest</option>
      <option value="Most Popular">Most Popular</option>
     </select>
-<input type="submit" value="Sort">
+    <input type="hidden" name="query" value="{{ request()->query }}" />
 </form>
 </div>
 </h5>
