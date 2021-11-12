@@ -56,12 +56,20 @@ class ProfilesController extends Controller
         ]);
 
         if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
+            
+            /*$imagePath = request('image')->store('profile', 'public');
 
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-            $image->save();
+            $image->save();*/
 
-            $imageArray = ['image' => $imagePath];
+            
+        $imagePath = request('image');
+
+        $filePath = 'images/' . $imagePath->getClientOriginalName();
+
+        Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
+
+            $imageArray = ['image' => $filePath];
         }
 
         auth()->user()->profile->update(array_merge(

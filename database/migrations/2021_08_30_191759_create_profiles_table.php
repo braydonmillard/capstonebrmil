@@ -19,6 +19,10 @@ class CreateProfilesTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('url')->nullable();
+            $table->string('first_name')->default('firstname');
+            $table->string('last_name')->default('lastname');
+            $table->string('image')->nullable();
+            $table->string('header_image')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
