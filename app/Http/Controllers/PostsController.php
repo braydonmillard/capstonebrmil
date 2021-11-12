@@ -111,7 +111,9 @@ class PostsController extends Controller
         //    $posts->orderBy('id', 'desc');
         //}
 
-        $posts = $posts->get();
+        //$posts = $posts->get();
+
+        dd($posts);
 
         return view('posts.search',compact('posts', 'search_text'));
     }
