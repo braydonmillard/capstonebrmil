@@ -11,10 +11,10 @@
 <label for="sort">Sort by: </label>
     <select name="sort" id="sort">
      <option value="Best Match">Best Match (Default)</option>
-     <option value="Newest" @if (request()->sort == "post_latest") selected @endif>Newest</option>
+     <option value="Newest">Newest</option>
      <option value="Most Popular">Most Popular</option>
     </select>
-    <input type="hidden" name="query" value="{{ request()->query }}" />
+    <input type="hidden" name="query" value="" />
 </form>
 </div>
 </h5>
