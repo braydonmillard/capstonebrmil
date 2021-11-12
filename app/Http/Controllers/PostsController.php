@@ -107,9 +107,11 @@ class PostsController extends Controller
 
         $posts = Post::where('title', 'ILIKE', '%'.$search_text.'%')->get();
 
-        if ($request->sort == "post_latest"){
-            $posts->orderBy('id', 'desc');
-        }
+        //if ($request->sort == "post_latest"){
+        //    $posts->orderBy('id', 'desc');
+        //}
+
+        $posts = $posts->get();
 
         return view('posts.search',compact('posts', 'search_text'));
     }
