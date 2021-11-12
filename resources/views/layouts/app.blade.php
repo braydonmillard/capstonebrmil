@@ -37,8 +37,8 @@
                     </ul>
                     <ul>
                     <form class="form-inline" type="get" action="{{ url('/search') }}">
-                        <input class="form-control" name="query" type="text" value="{{ request()->query }}" placeholder="Search for a recipe">
-                        <input type="hidden" name="sort" value="{{ request()->sort }}" />
+                        <input class="form-control" name="query" type="text" value="" placeholder="Search for a recipe">
+                        <input type="hidden" name="sort" value="" />
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit"Search>
                     </form>
                     </ul>
