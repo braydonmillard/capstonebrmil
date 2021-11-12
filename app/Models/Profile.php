@@ -9,9 +9,11 @@ class Profile extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = [];
+
+    /*protected $fillable = [
         'title',
-    ];
+    ];*/
 
     public function user(){
         return $this->belongsTo(User::class);
