@@ -113,7 +113,7 @@ class PostsController extends Controller
 
         //$posts = $posts->get();
 
-        dd($posts);
+        //dd($posts);
 
         return view('posts.search',compact('posts', 'search_text'));
     }
