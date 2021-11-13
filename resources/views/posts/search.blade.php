@@ -40,8 +40,13 @@
                     <i>{{ $post->caption }}</i> <br>
                     By  <a href="/profile/{{ $post->user->id }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
+                        </a> <br>
+                        <div class="post-favourite">
+                        <a href="/profile/{{ $post->user->id }}">
+                            <i class="fa fa-heart"></i>Add to favourites
                         </a>
-                    </p>
+                    </div>
+                </p>
                 </div>
             </div>
         </div>
