@@ -63,7 +63,7 @@
                         </a> <br>
                         <div class="post-favourite">
                         <a href="/profile/{{ $post->user->id }}">
-                        <i class="material-icons">favorite</i>
+                        <span class="material-icons">favorite</span>
                         </a>
                     </div>
                 
