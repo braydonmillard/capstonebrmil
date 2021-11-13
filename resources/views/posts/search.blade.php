@@ -19,6 +19,25 @@
 </div>
 </h5>
 
+<style>
+    .post-favourite{
+        position: absolute;
+        top:10%;
+        left:0;
+        z-index:99;
+        right:30px;
+        text-align:right;
+        padding-top:0;
+    }
+    .post-favourite .fa{
+        color:#cbcbcb;
+        font-size:32px;
+    }
+    .post-favourite .fa:hover{
+        color:#ff7007;
+    }
+</style>
+
 @foreach($posts as $post)
 
 <div class="row">
@@ -43,7 +62,7 @@
                         </a> <br>
                         <div class="post-favourite">
                         <a href="/profile/{{ $post->user->id }}">
-                            <i class="fa fa-heart"></i>Add to favourites
+                            <i class="fa fa-heart"></i>
                         </a>
                     </div>
                 </p>
