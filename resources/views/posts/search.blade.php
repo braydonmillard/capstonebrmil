@@ -51,7 +51,7 @@
         <div class="row pt-2 pb-4">
             <div class="col-6 offset-3">
                 <div>
-                    <p>
+                    
                     <span class="font-weight-bold">
                     <a href="/show/{{ $post->id }}">
                     {{ $post->title }}
@@ -63,10 +63,10 @@
                         </a> <br>
                         <div class="post-favourite">
                         <a href="/profile/{{ $post->user->id }}">
-                            <i class="fa fa-heart"></i>
+                        <i class="material-icons">favorite</i>
                         </a>
                     </div>
-                </p>
+                
                 </div>
             </div>
         </div>
