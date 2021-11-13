@@ -18,7 +18,7 @@
 </form>
 </div>
 </h5>
-
+<!--
 <style>
     .post-favourite{
         position: absolute;
@@ -37,6 +37,7 @@
         color:#ff7007;
     }
 </style>
+-->
 
 @foreach($posts as $post)
 
