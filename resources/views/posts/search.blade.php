@@ -7,7 +7,7 @@
 <h5>{{count($posts)}} recipes found for "{{$search_text}}":
 
 <div class="form-group col-6 offset-8">
-<form action="/search/{{search_text}}" type="get">
+<form action="/search/{{$search_text}}" type="get">
 <label for="sort">Sort by: </label>
     <select name="sort" id="sort">
      <option value="Best Match">Best Match (Default)</option>
