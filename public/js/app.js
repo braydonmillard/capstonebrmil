@@ -2193,7 +2193,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('follow-button', __webpack_require__(/*! ./components/FollowButton.vue */ "./resources/js/components/FollowButton.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('follow-button', __webpack_require__(/*! ./components/FollowButton.vue */ "./resources/js/components/FollowButton.vue"));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('favourite', __webpack_require__(/*! ./components/Favourite.vue */ "./resources/js/components/Favourite.vue"));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
