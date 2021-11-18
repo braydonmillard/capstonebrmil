@@ -63,7 +63,7 @@
                         </a> <br>
                         @if (Auth::check())
                             <div>
-                            <i class="material-icons">favorite</i>                    
+                                <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
                             </div>
                         @endif
 
