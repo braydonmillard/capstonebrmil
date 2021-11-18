@@ -20,6 +20,7 @@
         },
 
         mounted() {
+            console.log('Fav component mounted.')
             this.isFavourited = this.isFavourite ? true : false;
         },
 
