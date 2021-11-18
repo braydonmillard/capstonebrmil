@@ -1,12 +1,12 @@
 <template>
-    <span>
+    <div>
         <a href="#" v-if="isFavourited" @click.prevent="unFavourite(post)">
                     <i class="material-icons">favorite</i>                    
         </a>
         <a href="#" v-else @click.prevent="favourite(post)">
                     <i class="material-icons">favorite</i>                    
         </a>
-    </span>
+    </div>
 </template>
 
 <script>
