@@ -1,17 +1,17 @@
 <template>
-    <div>
+    <span>
         <a href="#" v-if="isFavourited" @click.prevent="unFavourite(post)">
                     <i class="material-icons">favorite</i>                    
         </a>
         <a href="#" v-else @click.prevent="favourite(post)">
                     <i class="material-icons">favorite</i>                    
         </a>
-    </div>
+    </span>
 </template>
 
 <script>
     export default {
-        name: 'favourite',
+        name: 'Favourite',
         props: ['post', 'favourited'],
 
         data: function() {
