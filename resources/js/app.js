@@ -21,6 +21,9 @@ import Vue from 'vue';
 
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
 
+Vue.component('favourite', require('./components/Favourite.vue'));
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

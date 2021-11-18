@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 use Storage;
 
 require('../vendor/autoload.php');
@@ -140,6 +141,20 @@ class PostsController extends Controller
         $myPost->update(['is_featured' => 1]);
 
         return Post::find($post->id);
+    }
+
+    public function favouritePost(Post $post)
+    {
+    Auth::user()->favourites()->attach($post->id);
+
+    return back();
+    }
+
+    public function unFavouritePost(Post $post)
+    {
+    Auth::user()->favourites()->detach($post->id);
+
+    return back();
     }
 
 }

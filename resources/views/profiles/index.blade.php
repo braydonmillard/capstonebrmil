@@ -21,6 +21,9 @@
 
             </div>
 
+            <a href="{{ url('my_favourites') }}">My Favourites</a>
+
+
             @can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             @endcan

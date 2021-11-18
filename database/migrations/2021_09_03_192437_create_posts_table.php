@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('instructions');
             $table->string('image');
             $table->boolean('is_featured')->default(0);
-            $table->integer('times_favorited')->default(0);
+            $table->integer('times_favourited')->default(0);
             $table->timestamps();
             
             $table->index('user_id');
