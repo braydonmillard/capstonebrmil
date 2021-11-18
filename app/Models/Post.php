@@ -22,7 +22,7 @@ class Post extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function favorited()
+    public function favourited()
     {
         return (bool) Favourite::where('user_id', Auth::id())
                             ->where('post_id', $this->id)
