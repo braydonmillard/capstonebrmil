@@ -78,6 +78,7 @@
                             <span class="text-dark">{{ $post->user->username }}</span>
                         </a>
                     </p>
+                    <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
                 </div>
             </div>
         </div>
