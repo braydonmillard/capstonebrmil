@@ -37807,7 +37807,7 @@ var render = function() {
               }
             }
           },
-          [_c("i", { staticClass: "fa fa-heart" })]
+          [_c("i", { staticClass: "material-icons" }, [_vm._v("favorite")])]
         )
       : _c(
           "a",
@@ -37820,7 +37820,7 @@ var render = function() {
               }
             }
           },
-          [_c("i", { staticClass: "fa fa-heart-o" })]
+          [_c("i", { staticClass: "material-icons" }, [_vm._v("favorite")])]
         )
   ])
 }
