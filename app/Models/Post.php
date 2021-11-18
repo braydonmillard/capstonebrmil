@@ -11,13 +11,22 @@ class Post extends Model
     
     use HasFactory;
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
 
-    public function review(){
+    public function review()
+    {
         return $this->hasMany(Review::class);
+    }
+
+    public function favorited()
+    {
+        return (bool) Favourite::where('user_id', Auth::id())
+                            ->where('post_id', $this->id)
+                            ->first();
     }
     
 }

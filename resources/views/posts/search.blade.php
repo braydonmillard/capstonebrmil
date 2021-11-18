@@ -67,8 +67,8 @@
                                 :post={{ $post->id }}
                                 :favourited={{ $post->favourited() ? 'true' : 'false' }}
                             ></favourite>
-    </div>
-@endif
+                    </div>
+                    @endif
 
                     </div>
                 
