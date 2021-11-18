@@ -61,7 +61,14 @@
                     By  <a href="/profile/{{ $post->user->id }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
                         </a> <br>
-
+                        @if (Auth::check())
+                            <div>
+                                <favourite
+                                :post={{ $post->id }}
+                                :favourited={{ $post->favourited() ? 'true' : 'false' }}
+                            ></favourite>
+    </div>
+@endif
 
                     </div>
                 
