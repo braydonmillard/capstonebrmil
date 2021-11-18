@@ -19,7 +19,7 @@ import Vue from 'vue';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('follow-button', require('./components/FollowButton.vue').default);
+//Vue.component('follow-button', require('./components/FollowButton.vue').default);
 
 Vue.component('favourite', require('./components/Favourite.vue').default);
 
