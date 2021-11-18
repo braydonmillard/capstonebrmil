@@ -21,7 +21,7 @@ import Vue from 'vue';
 
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
 
-Vue.component('favourite', require('./components/Favourite.vue'));
+Vue.component('favourite', require('./components/Favourite.vue').default);
 
 
 /**
