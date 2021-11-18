@@ -63,12 +63,9 @@
                         </a> <br>
                         @if (Auth::check())
                             <div>
-                                <favourite
-                                :post={{ $post->id }}
-                                :favourited={{ $post->favourited() ? 'true' : 'false' }}
-                            ></favourite>
-                    </div>
-                    @endif
+                                <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false'" }}></favourite>
+                            </div>
+                        @endif
 
                     </div>
                 
