@@ -16,7 +16,6 @@
     </select>
     <input type="hidden" name="query" value="" />
 </form>
-</div>
 </h5>
 <!--
 <style>
@@ -74,5 +73,6 @@
         </div>
 
 @endforeach
+</div>
 </div>
 @endsection
