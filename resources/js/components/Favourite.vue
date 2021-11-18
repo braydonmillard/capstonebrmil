@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: 'Favourite',
+        name: 'favourite',
         props: ['post', 'favourited'],
 
         data: function() {
