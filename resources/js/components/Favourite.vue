@@ -4,7 +4,7 @@
                     <i class="material-icons">favorite</i>                    
         </a>
         <a href="#" v-else @click.prevent="favourite(post)">
-                    <i class="material-icons">favorite</i>                    
+                    <i class="material-icons">favorite_border</i>                    
         </a>
     </span>
 </template>
