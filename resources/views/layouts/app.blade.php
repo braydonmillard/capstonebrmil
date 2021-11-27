@@ -24,8 +24,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Tastebook
+                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                <div><img src="/svg/cookbook-svgrepo-com.svg" style="height: 25px; border-right: 1px solid #333333;" class="pr-3"></div>                    
+                <div class="pl-3">Tastebook</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,7 +40,6 @@
                     <ul>
                     <form class="form-inline" type="get" action="{{ url('/search') }}">
                         <input class="form-control" name="query" type="search" placeholder="Search for a recipe">
-                        <input type="hidden" name="sort" value="" />
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit"Search>
                     </form>
                     </ul>

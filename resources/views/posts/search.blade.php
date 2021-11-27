@@ -7,16 +7,18 @@
 <h5>{{count($posts)}} recipes found for "{{$search_text}}":
 
 <div class="form-group col-6 offset-8">
-<form action="/search/{{$search_text}}" type="get">
+<form action="{{ url('/search') }}" type="get">
 <label for="sort">Sort by: </label>
     <select name="sort" id="sort">
-     <option value="Best Match">Best Match (Default)</option>
+     <option value="Best_Match">Best Match (Default)</option>
      <option value="Newest">Newest</option>
-     <option value="Most Popular">Most Popular</option>
+     <option value="Most_Popular">Most Popular</option>
     </select>
-    <input type="hidden" name="query" value="" />
+    <input type="hidden" name="query" value="{{ $search_text }}"/>
+    <button type="submit" value="Submit">Sort</button>
 </form>
 </h5>
+<br>
 <!--
 <style>
     .post-favourite{
@@ -43,7 +45,7 @@
 <div class="row">
             <div class="col-6 offset-3">
                 <a href="/show/{{ $post->id }}">
-                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-75">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="square">
                 </a>
             </div>
         </div>
@@ -71,8 +73,8 @@
                 </div>
             </div>
         </div>
+</div>
+</div>
 
 @endforeach
-</div>
-</div>
 @endsection

@@ -106,17 +106,40 @@ class PostsController extends Controller
     public function search(Request $request){
         $search_text = $_GET['query'];
 
-        $posts = Post::where('title', 'ILIKE', '%'.$search_text.'%')->get();
+        /*$query = Post::query();
+
+        if ($s = $request->input('s')) {
+            $query->whereRaw("title LIKE '%'. $s .'%' ");
+        }*/
+
+        if ($request->sort == "Newest")
+        {
+            $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->orderBy('id', 'desc')->get();
+        }
+        else
+        {
+        $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->get();
+        }
+
+
 
         //if ($request->sort == "post_latest"){
         //    $posts->orderBy('id', 'desc');
         //}
 
+
         //$posts = $posts->get();
 
         //dd($posts);
 
+        //dd($request->sort);
+            /*
+        if ($sort = $request->input('sort')) {
+            $query->orderBy('id', 'desc', $sort);
+        }*/
+
         return view('posts.search',compact('posts', 'search_text'));
+        //return $query->get();
     }
 
     public function sort(){
