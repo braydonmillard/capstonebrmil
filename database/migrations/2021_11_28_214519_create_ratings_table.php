@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');
-            $table->unsignedBigInteger('post_id');
             $table->timestamps();
+            $table->integer('rating');
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('user_id');
         });
     }
- 
+
     /**
      * Reverse the migrations.
      *
@@ -28,6 +29,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('ratings');
     }
 }

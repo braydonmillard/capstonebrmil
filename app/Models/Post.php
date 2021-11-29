@@ -24,6 +24,11 @@ class Post extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function favourited()
     {
         return (bool) Favourite::where('user_id', Auth::id())

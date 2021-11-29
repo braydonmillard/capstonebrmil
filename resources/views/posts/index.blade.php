@@ -96,6 +96,26 @@
         @endif
     @endif
 
+    Most searched for terms:
+
+    @if($searchQueries->count() > 0)
+    @foreach($searchQueries as $searchQuery)
+        {{$searchQuery->query_text}}
+        {{$searchQuery->timestamps}}
+        <br>
+    @endforeach
+    @endif
+
+    Most Favourited Recipes:
+
+
+    <br>
+
+    Most Prolific Recipe Makers:
+    
+    
+
+
 
 </div>
 @endsection

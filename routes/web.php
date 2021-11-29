@@ -33,6 +33,8 @@ Route::get('/search/{query}/sort', [App\Http\Controllers\PostsController::class,
 
 Route::get('/feature/{post}', [App\Http\Controllers\PostsController::class, 'feature']);
 
+Route::get('/rate/{post}', [App\Http\Controllers\PostsController::class, 'rate']);
+
 Route::post('favourite/{post}', [App\Http\Controllers\PostsController::class, 'favouritePost']);
 Route::post('unfavourite/{post}', [App\Http\Controllers\PostsController::class, 'unFavouritePost']);
 

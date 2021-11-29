@@ -40,7 +40,7 @@
     <div class="row pt-5">
         @foreach($user->posts as $post)
             <div class="col-4 pb-4">
-                <a href="/p/{{ $post->id }}">
+                <a href="/show/{{ $post->id }}">
                     <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100">
                 </a>
                 {{$post->title}}

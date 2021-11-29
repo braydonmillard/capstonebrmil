@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\SearchQuery;
+use App\Models\Rating;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -26,8 +28,10 @@ class PostsController extends Controller
 
         $posts = Post::latest()->limit(3)->get();
 
+        $searchQueries = SearchQuery::all();
+
         //return view('posts.index', compact('posts', 'allposts'));
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'searchQueries'));
     }
 
     public function create(){
@@ -111,6 +115,10 @@ class PostsController extends Controller
         if ($s = $request->input('s')) {
             $query->whereRaw("title LIKE '%'. $s .'%' ");
         }*/
+        SearchQuery::create([ 'query_text' => $search_text,
+        ]);
+
+
 
         if ($request->sort == "Newest")
         {
@@ -148,6 +156,29 @@ class PostsController extends Controller
         $posts = Post::latest()->get();
 
         return view('posts.search',compact('posts'));
+    }
+
+    public function rate(Post $post){
+        //$search_text = $searchText;
+
+        $myRating = Rating::create([ 
+        'post_id' => $post->id,
+        'rating' => 1,
+        'user_id' => auth()->user()->id,
+        ]);
+        //$posts = Post::latest()->get();
+        $myPost = Post::find($post->id);
+
+        //$myPost->rating
+
+        $myPost->rating()->attach($myRating);
+
+        dd($myPost->rating);
+
+
+
+        //return view('posts.show', compact('post'));
+        return Post::find($post->id);
     }
 
     public function feature(Post $post){
