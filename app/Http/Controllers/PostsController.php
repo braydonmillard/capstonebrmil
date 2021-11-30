@@ -158,22 +158,51 @@ class PostsController extends Controller
         return view('posts.search',compact('posts'));
     }
 
-    public function rate(Post $post){
+    public function rate(Post $post, Request $request){
         //$search_text = $searchText;
+
+        //If user gives invalid rating value, ignore and return to page
+        if($request->rating > 5 || $request->rating < 1){
+            return back();
+        }
+
+        //dd(auth()->user()->id);
+        
+        $ratings = $post->Rating;
+
+        //dd($post->Rating->first());
+        //dd(contains($user->id)
+
+
+        //If user has already rated this post, update their rating
+        if($ratings->contains('user_id', auth()->user()->id)){
+            
+        }
+        
+
+
+        //dd(Rating::all());
+        
+        //if(Post::find($post->id))
+
+
+        //dd($request->rating);
 
         $myRating = Rating::create([ 
         'post_id' => $post->id,
-        'rating' => 1,
+        'rating' => $request->rating,
         'user_id' => auth()->user()->id,
         ]);
         //$posts = Post::latest()->get();
         $myPost = Post::find($post->id);
 
+
+
         //$myPost->rating
 
-        $myPost->rating()->attach($myRating);
+        //$myPost->rating()->attach($myRating);
 
-        dd($myPost->rating);
+        //dd($myPost->rating);
 
 
 

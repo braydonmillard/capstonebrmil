@@ -15,11 +15,12 @@
         <div class="row"> {{ $post->rating }}/5 </div>
 
         <div class="rating">
-            <a href="/rate/{{ $post->id }}"><i class="fa fa-star" > </i></a>
-            <a href="/profile/{{ $post->user->id }}"><i class="fa fa-star" > </i></a>
-            <a href="/profile/{{ $post->user->id }}"><i class="fa fa-star" > </i></a>
-            <a href="/profile/{{ $post->user->id }}"><i class="fa fa-star" > </i></a>
-            <a href="/profile/{{ $post->user->id }}"><i class="fa fa-star" > </i></a>
+            <a href="/rate/{{ $post->id }}/1"><i class="fa fa-star"></i></a>
+            <a href="/rate/{{ $post->id }}/2"><i class="fa fa-star"></i></a>
+            <a href="/rate/{{ $post->id }}/3"><i class="fa fa-star"></i></a>
+            <a href="/rate/{{ $post->id }}/4"><i class="fa fa-star"></i></a>
+            <a href="/rate/{{ $post->id }}/5"><i class="fa fa-star"></i></a>
+
         </div>
 
         <div class="col-6 offset-7">

@@ -71,7 +71,9 @@
                 <div>
                     <p>
                     <span class="font-weight-bold">
+                    <a href="/show/{{ $post->id }}">
                     {{ $post->title }}
+                    </a>
                     </span> <br>
                     <i>{{ $post->caption }}</i> <br>
                     By  <a href="/profile/{{ $post->user->id }}">
