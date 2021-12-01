@@ -21,7 +21,6 @@
 
             </div>
 
-            <a href="{{ url('my_favourites') }}">My Favourites</a>
 
 
             @can('update', $user->profile)
@@ -37,6 +36,8 @@
         </div>
     </div>
 
+    Personal recipes
+
     <div class="row pt-5">
         @foreach($user->posts as $post)
             <div class="col-4 pb-4">
@@ -48,5 +49,20 @@
             </div>
         @endforeach
     </div>
+
+    Favourites
+
+    <div class="row pt-5">
+        @foreach($user->favourites as $post)
+            <div class="col-4 pb-4">
+                <a href="/show/{{ $post->id }}">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100">
+                </a>
+                {{$post->title}}
+                <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
+            </div>
+        @endforeach
+    </div>
+
 </div>
 @endsection

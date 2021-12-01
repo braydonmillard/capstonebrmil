@@ -33,12 +33,14 @@
 
         methods: {
             favourite(post) {
+                alert('Recipe added to favourites');
                 axios.post('/favourite/'+post)
                     .then(response => this.isFavourited = true)
                     .catch(response => console.log(response.data));
             },
 
             unFavourite(post) {
+                alert('Recipe removed from favourites');
                 axios.post('/unfavourite/'+post)
                     .then(response => this.isFavourited = false)
                     .catch(response => console.log(response.data));

@@ -35,10 +35,10 @@ Route::get('/feature/{post}', [App\Http\Controllers\PostsController::class, 'fea
 
 Route::get('/rate/{post}/{rating}', [App\Http\Controllers\PostsController::class, 'rate']);
 
-Route::post('favourite/{post}', [App\Http\Controllers\PostsController::class, 'favouritePost']);
-Route::post('unfavourite/{post}', [App\Http\Controllers\PostsController::class, 'unFavouritePost']);
+Route::post('/favourite/{post}', [App\Http\Controllers\PostsController::class, 'favouritePost']);
+Route::post('/unfavourite/{post}', [App\Http\Controllers\PostsController::class, 'unFavouritePost']);
 
-Route::get('my_favourites', [App\Http\Controllers\UsersController::class, 'myFavourites']);
+Route::get('/my_favourites', [App\Http\Controllers\UsersController::class, 'myFavourites']);
 
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');

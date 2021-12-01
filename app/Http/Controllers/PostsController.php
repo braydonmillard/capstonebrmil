@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\SearchQuery;
 use App\Models\Rating;
+use App\Models\Favourite;
+use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -167,24 +169,32 @@ class PostsController extends Controller
         }
 
         //dd(auth()->user()->id);
+
+        /*
+            Just divide sum of ratings by count
+        */
         
         $ratings = $post->Rating;
 
+        //dd($ratings);
+
+        //$ratings->avg
+
         //dd($post->Rating->first());
         //dd(contains($user->id)
+        $avgRating = round(Rating::avg('rating'), 1);
+
+        //round(avgRating, 1);
 
 
         //If user has already rated this post, update their rating
         if($ratings->contains('user_id', auth()->user()->id)){
-            
+            dd("You have already rated this post");
         }
-        
-
 
         //dd(Rating::all());
         
         //if(Post::find($post->id))
-
 
         //dd($request->rating);
 
@@ -196,18 +206,16 @@ class PostsController extends Controller
         //$posts = Post::latest()->get();
         $myPost = Post::find($post->id);
 
-
-
         //$myPost->rating
 
         //$myPost->rating()->attach($myRating);
 
         //dd($myPost->rating);
 
-
-
-        //return view('posts.show', compact('post'));
-        return Post::find($post->id);
+        return view('posts.show', compact('post', 'avgRating'));
+        //return Post::find($post->id);
+        //return back();
+        //return redirect()->route('posts');
     }
 
     public function feature(Post $post){
@@ -228,7 +236,11 @@ class PostsController extends Controller
 
     public function favouritePost(Post $post)
     {
-    Auth::user()->favourites()->attach($post->id);
+    auth()->user()->favourites()->attach($post->id);
+
+    console.log('ewrewf');
+
+    dd(auth()->user()->favourites());
 
     return back();
     }

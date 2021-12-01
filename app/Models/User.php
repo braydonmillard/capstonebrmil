@@ -67,9 +67,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-
+    
     public function favourites()
     {
     return $this->belongsToMany(Post::class, 'favourites', 'user_id', 'post_id')->withTimeStamps();
     }
+
+
 }

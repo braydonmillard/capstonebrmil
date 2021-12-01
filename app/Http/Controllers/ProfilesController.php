@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
@@ -79,4 +80,5 @@ class ProfilesController extends Controller
 
         return redirect("/profile/{$user->id}");
     }
+
 }

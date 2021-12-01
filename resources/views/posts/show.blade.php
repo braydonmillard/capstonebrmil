@@ -12,7 +12,12 @@
             </div>
         </div>
 
-        <div class="row"> {{ $post->rating }}/5 </div>
+        <div class="row"> @if(isset($avgRating)) {{ $avgRating }}@else Not yet Rated @endif/5 </div>
+
+        <!--@if(isset($avgRating))
+        <div class="row"> {{ $avgRating }} </div>
+        
+        @endif-->
 
         <div class="rating">
             <a href="/rate/{{ $post->id }}/1"><i class="fa fa-star"></i></a>

@@ -2097,6 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
     favourite: function favourite(post) {
       var _this = this;
 
+      alert('Recipe added to favourites!');
       axios.post('/favourite/' + post).then(function (response) {
         return _this.isFavourited = true;
       })["catch"](function (response) {

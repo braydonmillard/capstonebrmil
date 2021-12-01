@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="description" class="col-md-4 col-form-label">Description</label>
+                    <label for="description" class="col-md-4 col-form-label">Bio</label>
 
                     <input id="description"
                            type="text"
