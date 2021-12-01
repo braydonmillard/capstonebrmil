@@ -68,16 +68,16 @@
 
 
     @if($user->following()->first() !== null)
-    {{$profileImages = $user->following()->get()->pluck('image');}}
+    $profileImages = $user->following()->get()->pluck('image');
     
 
     <div class="row pt-5">
         @foreach($profileImages as $image)
             <div class="col-4 pb-4">
             @if($image == null)
-            <img src="https://brmil.s3.us-east-2.amazonaws.com/images/1426633644114.jpg" class="rounded-circle w-100">
+            <img src="https://brmil.s3.us-east-2.amazonaws.com/images/1426633644114.jpg" class="rounded-circle w-10 h-10">
             @else
-            <img src="https://brmil.s3.us-east-2.amazonaws.com/{{$image}}" class="rounded-circle w-100">
+            <img src="https://brmil.s3.us-east-2.amazonaws.com/{{$image}}" class="rounded-circle w-10 h-10">
             @endif
             </div>
         @endforeach
