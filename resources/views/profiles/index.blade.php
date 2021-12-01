@@ -68,7 +68,7 @@
 
 
     @if($user->following()->first() !== null)
-    $profileImages = $user->following()->get()->pluck('image');
+    {{$profileImages = $user->following()->get()->pluck('image');}}
     
 
     <div class="row pt-5">
