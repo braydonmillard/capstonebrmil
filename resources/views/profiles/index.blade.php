@@ -68,8 +68,8 @@
 
 
     @if($user->following()->first() !== null)
-    {{$user->following()->get()->pluck('image')}}
-    @endif
+    {{$profileImages = $user->following()->get()->pluck('image');}}
+    
 
     <div class="row pt-5">
         @foreach($user as $following)
@@ -77,6 +77,6 @@
             </div>
         @endforeach
     </div>
-
+    @endif
 </div>
 @endsection
