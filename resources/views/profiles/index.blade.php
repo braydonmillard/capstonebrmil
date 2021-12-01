@@ -78,6 +78,7 @@
             <img src="https://brmil.s3.us-east-2.amazonaws.com/images/1426633644114.jpg" class="rounded-circle w-100">
             @else
             <img src="https://brmil.s3.us-east-2.amazonaws.com/{{$image}}" class="rounded-circle w-100">
+            @endif
             </div>
         @endforeach
     </div>
