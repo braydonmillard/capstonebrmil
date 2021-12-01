@@ -17,7 +17,7 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->image) ? $this->image : 'https://brmil.s3.us-east-2.amazonaws.com/images/1426633644114.jpg';
+        $imagePath = ($this->image) ? $this->image : 'images/1426633644114.jpg';
         return $imagePath;
     }
 
