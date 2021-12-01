@@ -72,8 +72,9 @@
     
 
     <div class="row pt-5">
-        @foreach($user as $following)
+        @foreach($profileImages as $image)
             <div class="col-4 pb-4">
+                {{$image}}
             </div>
         @endforeach
     </div>
