@@ -45,7 +45,7 @@
                     <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100">
                 </a>
                 {{$post->title}}
-                <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
+                <favourite :post="{{ $post->id }}" :favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
             </div>
         @endforeach
     </div>
