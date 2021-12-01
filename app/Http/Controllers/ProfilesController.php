@@ -71,7 +71,7 @@ class ProfilesController extends Controller
 
         Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
 
-            $imageArray = ['image' => $filePath];
+            $imageArray = ['image' => $imagePath];
         }
 
         auth()->user()->profile->update(array_merge(
