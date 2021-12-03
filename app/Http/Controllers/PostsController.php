@@ -9,6 +9,7 @@ use App\Models\Favourite;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
+use DB;
 use Storage;
 
 require('../vendor/autoload.php');
@@ -32,8 +33,25 @@ class PostsController extends Controller
 
         $searchQueries = SearchQuery::all();
 
+        $queriesGrouped = DB::table('search_queries')
+                            ->select('query_text', DB::raw('count(*) as total'))
+                            ->groupBy('query_text')
+                            ->orderBy('total', 'desc')
+                            ->get();
+
+        $postsGrouped = DB::table('posts')
+                            ->select('*')
+                            ->orderBy('times_favourited', 'desc')
+                            ->get();
+
+        $usersGrouped = DB::table('posts')
+                            ->select('user_id', DB::raw('count(*) as total'))
+                            ->groupBy('user_id')
+                            ->orderBy('total', 'desc')
+                            ->get();
+
         //return view('posts.index', compact('posts', 'allposts'));
-        return view('posts.index', compact('posts', 'searchQueries'));
+        return view('posts.index', compact('posts', 'searchQueries', 'queriesGrouped', 'usersGrouped', 'postsGrouped'));
     }
 
     public function create(){
@@ -126,6 +144,10 @@ class PostsController extends Controller
         {
             $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->orderBy('id', 'desc')->get();
         }
+        else if($request->sort == "Most_Popular")
+        {
+            $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->orderBy('id', 'desc')->get();
+        }
         else
         {
         $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->get();
@@ -182,14 +204,13 @@ class PostsController extends Controller
 
         //dd($post->Rating->first());
         //dd(contains($user->id)
-        $avgRating = round(Rating::avg('rating'), 1);
-
         //round(avgRating, 1);
-
-
-        //If user has already rated this post, update their rating
+        
+        
+        //User can only rate post once
         if($ratings->contains('user_id', auth()->user()->id)){
-            dd("You have already rated this post");
+            echo("You have already rated this post");
+            return back();
         }
 
         //dd(Rating::all());
@@ -204,7 +225,28 @@ class PostsController extends Controller
         'user_id' => auth()->user()->id,
         ]);
         //$posts = Post::latest()->get();
+
+        //$avgRating = round(Rating::avg('rating'), 1);
+
+        //dd($avgRating);
+
+        $ratingArray = $post->rating->pluck('rating');
+        
+        //dd(count($ratingArray->all()));
+
+        //dd(array_sum($ratingArray->all()));
+
+        $avgRating = array_sum($ratingArray->all()) / count($ratingArray->all());
+
+        //dd(round($avgRating, 1));
+
+        $avgRating = round($avgRating, 1);
+
         $myPost = Post::find($post->id);
+
+        $myPost->update(['averaged_rating' => $avgRating]);
+
+        //Set average rating field for post
 
         //$myPost->rating
 
@@ -236,11 +278,23 @@ class PostsController extends Controller
 
     public function favouritePost(Post $post)
     {
-    auth()->user()->favourites()->attach($post->id);
+        //alert('test test test');
+        //$myPost = Post::find($post->id);
 
-    console.log('ewrewf');
+        //$myPost->update(['times_favourited' => 1]);
 
-    dd(auth()->user()->favourites());
+    
+    Auth::user()->favourites()->attach($post->id);
+
+    //alert('test test test');
+
+
+    //dd($post);
+    console.log('Post favourited!');
+
+
+
+    //dd(auth()->user()->favourites());
 
     return back();
     }

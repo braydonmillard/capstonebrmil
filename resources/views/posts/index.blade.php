@@ -101,20 +101,49 @@
     Most searched for terms:
 
     @if($searchQueries->count() > 0)
-    @foreach($searchQueries as $searchQuery)
-        {{$searchQuery->query_text}}
-        {{$searchQuery->timestamps}}
-        <br>
+    <table>
+        <tr>
+            <th> Query </th>
+            <th> Times Searched </th>
+        </tr>
+    @foreach($queriesGrouped as $searchQuery)
+        <tr>
+            <td> {{$searchQuery->query_text}} </td>
+            <td> {{$searchQuery->total}} </td>
+        </tr>
     @endforeach
+    </table>
     @endif
 
     Most Favourited Recipes:
+    <table>
+        <tr>
+            <th> Recipe Id </th>
+            <th> Times Favourited </th>
+        </tr>
+    @foreach($postsGrouped as $postt)
+        <tr>
+            <td> {{$postt->title}}</td>
+            <td> {{$postt->times_favourited}} </td>
+        </tr>
+    @endforeach
+    </table>
 
+    <br>    
 
-    <br>
-
-    Most Prolific Recipe Makers:
-    
+    Most Prolific Recipe Uploaders:
+    <table>
+        <tr>
+            <th> User Id </th>
+            <th> Recipes Uploaded </th>
+        </tr>
+    @foreach($usersGrouped as $user)
+        <tr>
+            <td> <a href="/profile/{{ $user->user_id }}">{{$user->user_id}} </a></td>
+            <td> {{$user->total}} </td>
+        </tr>
+    @endforeach
+    </table>
     
 
 

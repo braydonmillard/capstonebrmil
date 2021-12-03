@@ -37,6 +37,7 @@
                 axios.post('/favourite/'+post)
                     .then(response => this.isFavourited = true)
                     .catch(response => console.log(response.data));
+
             },
 
             unFavourite(post) {

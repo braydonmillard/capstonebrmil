@@ -23,6 +23,8 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->boolean('is_featured')->default(0);
             $table->integer('times_favourited')->default(0);
+            $table->integer('times_made')->default(0);
+            $table->decimal('averaged_rating')->nullable();
             $table->timestamps();
             
             $table->index('user_id');

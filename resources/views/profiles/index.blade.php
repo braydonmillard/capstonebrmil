@@ -42,7 +42,7 @@
         @foreach($user->posts as $post)
             <div class="col-4 pb-4">
                 <a href="/show/{{ $post->id }}">
-                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100 h-75">
                 </a>
                 {{$post->title}}
                 <favourite :post="{{ $post->id }}" :favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
@@ -56,7 +56,7 @@
         @foreach($user->favourites as $post)
             <div class="col-4 pb-4">
                 <a href="/show/{{ $post->id }}">
-                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100 h-75">
                 </a>
                 {{$post->title}}
                 <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>

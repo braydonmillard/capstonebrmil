@@ -13,5 +13,6 @@ class Rating extends Model
         'rating',
         'user_id',
         'post_id',
+        'average_rating'
     ];
 }

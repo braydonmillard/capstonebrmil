@@ -35,6 +35,7 @@ Route::get('/feature/{post}', [App\Http\Controllers\PostsController::class, 'fea
 
 Route::get('/rate/{post}/{rating}', [App\Http\Controllers\PostsController::class, 'rate']);
 
+Route::get('/favourite/{post}', [App\Http\Controllers\PostsController::class, 'favouritePost']);
 Route::post('/favourite/{post}', [App\Http\Controllers\PostsController::class, 'favouritePost']);
 Route::post('/unfavourite/{post}', [App\Http\Controllers\PostsController::class, 'unFavouritePost']);
 

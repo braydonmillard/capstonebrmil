@@ -4,20 +4,24 @@
 <div class="container">
     <h3>{{ $post->title }}</h3><br>
 
+    @can('update', $post->user->profile)
+        <a href="/p/edit">Edit Post</a>
+        <br>
+    @endcan
+
+    @can('update', $post->user->profile)
+        <a href="/p/delete">Delete Post</a>
+    @endcan
+
         <div class="row">
             <div class="col-6 offset-0">
             By <a href="/profile/{{ $post->user->id }}">
             {{ $post->user->username }} </a> <br>
-            {{ $post->caption }}
+            <i>{{ $post->caption }}</i>
             </div>
         </div>
 
-        <div class="row"> @if(isset($avgRating)) {{ $avgRating }}@else Not yet Rated @endif/5 </div>
-
-        <!--@if(isset($avgRating))
-        <div class="row"> {{ $avgRating }} </div>
-        
-        @endif-->
+        <div class="row col-6 offset-0"> @if(isset( $post->averaged_rating )) {{ $post->averaged_rating }} @else Not yet Rated @endif/5 </div>
 
         <div class="rating">
             <a href="/rate/{{ $post->id }}/1"><i class="fa fa-star"></i></a>
