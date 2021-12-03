@@ -19,7 +19,7 @@
             followUser() {
                 axios.post('/follow/' + this.userId)
                     .then(response => {
-                        alert(response.data);
+                        alert('User followed');
                         this.status = ! this.status;
                         console.log(response.data);
                     })

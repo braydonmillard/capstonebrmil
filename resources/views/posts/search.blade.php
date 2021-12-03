@@ -42,10 +42,11 @@
 
 @foreach($posts as $post)
 
+
 <div class="row">
-            <div class="col-6 offset-3">
+            <div class="col-4 offset-3">
                 <a href="/show/{{ $post->id }}">
-                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="square">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="img-thumbnail">
                 </a>
             </div>
         </div>

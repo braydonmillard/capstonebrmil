@@ -118,7 +118,7 @@
     Most Favourited Recipes:
     <table>
         <tr>
-            <th> Recipe Id </th>
+            <th> Recipe Name </th>
             <th> Times Favourited </th>
         </tr>
     @foreach($postsGrouped as $postt)

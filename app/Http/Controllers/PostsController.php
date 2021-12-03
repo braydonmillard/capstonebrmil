@@ -146,7 +146,7 @@ class PostsController extends Controller
         }
         else if($request->sort == "Most_Popular")
         {
-            $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->orderBy('id', 'desc')->get();
+            $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')->orderBy('times_made', 'desc')->get();
         }
         else
         {
@@ -209,8 +209,7 @@ class PostsController extends Controller
         
         //User can only rate post once
         if($ratings->contains('user_id', auth()->user()->id)){
-            echo("You have already rated this post");
-            return back();
+            return view('posts.show', compact('post'));
         }
 
         //dd(Rating::all());
@@ -244,7 +243,7 @@ class PostsController extends Controller
 
         $myPost = Post::find($post->id);
 
-        $myPost->update(['averaged_rating' => $avgRating]);
+        $post->update(['averaged_rating' => $avgRating]);
 
         //Set average rating field for post
 
@@ -254,7 +253,7 @@ class PostsController extends Controller
 
         //dd($myPost->rating);
 
-        return view('posts.show', compact('post', 'avgRating'));
+        return view('posts.show', compact('post'));
         //return Post::find($post->id);
         //return back();
         //return redirect()->route('posts');
@@ -278,32 +277,43 @@ class PostsController extends Controller
 
     public function favouritePost(Post $post)
     {
-        //alert('test test test');
-        //$myPost = Post::find($post->id);
+        $times_favourited = $post->times_favourited;
 
-        //$myPost->update(['times_favourited' => 1]);
+        $times_favourited++;
 
-    
-    Auth::user()->favourites()->attach($post->id);
+        $post->update(['times_favourited' => $times_favourited]);
 
-    //alert('test test test');
+        Auth::user()->favourites()->attach($post->id);
 
+        console.log('Post favourited!');
 
-    //dd($post);
-    console.log('Post favourited!');
-
-
-
-    //dd(auth()->user()->favourites());
-
-    return back();
+        return back();
     }
 
     public function unFavouritePost(Post $post)
     {
-    Auth::user()->favourites()->detach($post->id);
+        $times_favourited = $post->times_favourited;
 
-    return back();
+        $times_favourited--;
+
+        $post->update(['times_favourited' => $times_favourited]);
+        
+        Auth::user()->favourites()->detach($post->id);
+
+        return back();
+    }
+
+    public function addToMade(Post $post)
+    {
+        $times_made = $post->times_made;
+
+        $times_made++;
+
+        $post->update(['times_made' => $times_made]);
+
+        Auth::user()->made_Recipes()->attach($post->id);
+        
+        return back();
     }
 
 }

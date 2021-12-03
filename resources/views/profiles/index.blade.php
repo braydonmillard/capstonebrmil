@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    Personal recipes
+    <h3>Submitted recipes</h3>
 
     <div class="row pt-5">
         @foreach($user->posts as $post)
@@ -50,7 +50,7 @@
         @endforeach
     </div>
 
-    Favourites
+    <h3>Favourites</h3>
 
     <div class="row pt-5">
         @foreach($user->favourites as $post)
@@ -64,13 +64,26 @@
         @endforeach
     </div>
 
-    Following
+    <h3>Made Recipes</h3>
+
+    <div class="row pt-5">
+        @foreach($user->made_recipes as $post)
+            <div class="col-4 pb-4">
+                <a href="/show/{{ $post->id }}">
+                    <img src="https://brmil.s3.us-east-2.amazonaws.com/{{ $post->image }}" class="w-100 h-75">
+                </a>
+                {{$post->title}}
+                <favourite post="{{ $post->id }}" favourited="{{ $post->favourited() ? 'true' : 'false' }}"></favourite>
+            </div>
+        @endforeach
+    </div>
+
+    <h3>Following</h3>
 
 
     @if($user->following()->first() !== null)
     {{$profileImages = $user->following()->get()->pluck('image');}}
     
-
     <div class="row pt-5">
         @foreach($profileImages as $image)
             <div class="col-2 p-5">
@@ -83,5 +96,9 @@
         @endforeach
     </div>
     @endif
+
+    <h3>Followers</h3>
+
+
 </div>
 @endsection

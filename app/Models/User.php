@@ -73,5 +73,10 @@ class User extends Authenticatable
     return $this->belongsToMany(Post::class, 'favourites', 'user_id', 'post_id')->withTimeStamps();
     }
 
+    public function made_Recipes()
+    {
+    return $this->belongsToMany(Post::class, 'made_Recipes', 'user_id', 'post_id')->withTimeStamps();
+    }
+
 
 }
