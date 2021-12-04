@@ -13,7 +13,7 @@ class CreateMadeRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('made_recipes', function (Blueprint $table) {
+        Schema::create("made_recipes", function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
