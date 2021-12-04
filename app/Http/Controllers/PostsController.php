@@ -24,7 +24,7 @@ class PostsController extends Controller
 
     public function index(){
 
-        $posts = Post::latest()->limit(3)->get();
+        $posts = Post::latest()->limit(100)->get();
 
         $searchQueries = SearchQuery::all();
 
