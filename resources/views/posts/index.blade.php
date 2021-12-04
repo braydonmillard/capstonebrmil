@@ -94,9 +94,8 @@
 
     @if(Auth::check())
         @if(auth()->user()->is_admin)
-        Hi admin
-        @endif
-    @endif
+        <h2>Analytics</h2>
+        
 
     Most searched for terms:
 
@@ -144,6 +143,9 @@
         </tr>
     @endforeach
     </table>
+
+    @endif
+    @endif
     
 
 
