@@ -113,7 +113,7 @@
         </tr>
     @endforeach
     </table>
-    @endif
+    @endif <br><br>
 
     Most Favourited Recipes:
     <table>
@@ -129,7 +129,7 @@
     @endforeach
     </table>
 
-    <br>    
+    <br><br>
 
     Most Prolific Recipe Uploaders:
     <table>

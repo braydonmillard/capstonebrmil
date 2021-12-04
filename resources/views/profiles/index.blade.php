@@ -30,9 +30,7 @@
             <div class="d-flex">
                 <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
             </div>
-            <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
-            <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
 
@@ -82,15 +80,14 @@
 
 
     @if($user->following()->first() !== null)
-    {{$profileImages = $user->following()->get()->pluck('image');}}
     
     <div class="row pt-5">
-        @foreach($profileImages as $image)
+        @foreach($user->following()->get() as $following)
             <div class="col-2 p-5">
-            @if($image == null)
-            <img src="https://brmil.s3.us-east-2.amazonaws.com/images/1426633644114.jpg" class="rounded-circle w-100">
+            @if($following->image == null)
+            <a href="/profile/{{ $following->id }}"><img src="https://brmil.s3.us-east-2.amazonaws.com/images/profile_image.png" class="rounded-circle w-100"></a>
             @else
-            <img src="https://brmil.s3.us-east-2.amazonaws.com/{{$image}}" class="rounded-circle w-100">
+            <a href="/profile/{{ $following->id }}"><img src="https://brmil.s3.us-east-2.amazonaws.com/{{$following->image}}" class="rounded-circle w-100"></a>
             @endif
             </div>
         @endforeach
@@ -98,6 +95,21 @@
     @endif
 
     <h3>Followers</h3>
+
+    @if($user->followers()->first() !== null)
+    
+    <div class="row pt-5">
+        @foreach($user->followers()->get() as $follower)
+            <div class="col-2 p-5">
+            @if($follower->image == null)
+            <a href="/profile/{{ $follower->id }}"><img src="https://brmil.s3.us-east-2.amazonaws.com/images/profile_image.png" class="rounded-circle w-100"></a>
+            @else
+            <a href="/profile/{{ $follower->id }}"><img src="https://brmil.s3.us-east-2.amazonaws.com/{{$follower->image}}" class="rounded-circle w-100"></a>
+            @endif
+            </div>
+        @endforeach
+    </div>
+    @endif
 
 
 </div>

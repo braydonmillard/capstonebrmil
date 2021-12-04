@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\SearchQuery;
 use App\Models\Rating;
 use App\Models\Favourite;
+use App\Models\Review;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
@@ -314,6 +315,90 @@ class PostsController extends Controller
         Auth::user()->made_Recipes()->attach($post->id);
         
         return back();
+    }
+
+    public function review(Post $post, Request $request)
+    {        
+        $myReview = Review::create([ 
+            'post_id' => $post->id,
+            'comment' => $request->review,
+            'user_id' => auth()->user()->id,
+            'username' => auth()->user()->username,
+            ]);
+        
+        
+        return view('posts.show', compact('post'));
+    }
+
+    public function likereview(Review $review)
+    {        
+        $times_liked = $review->thumbs_up;
+
+        $times_liked++;
+
+        $review->update(['thumbs_up' => $times_liked]);
+        
+        
+        return back();
+    }
+
+    public function edit(Post $post)
+    {
+        if(auth()->user()->id == $post->user_id){
+        return view('posts.edit', compact('post'));
+        }
+
+        return redirect("/");
+    }
+
+    public function update(Post $post)
+    {
+        if(auth()->user()->id == $post->user_id){
+
+        $data = request()->validate([
+            'title' => 'required',
+            'caption' => 'required',
+            'ingredients' => 'required',
+            'instructions' => 'required',
+            'image' => '',
+        ]);
+
+        if (request('image')) {
+            
+            /*$imagePath = request('image')->store('profile', 'public');
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();*/
+
+            
+        $imagePath = request('image');
+
+        $filePath = 'images/' . $imagePath->getClientOriginalName();
+
+        Storage::disk('s3')->put($filePath, file_get_contents($imagePath), 'public');
+
+            $imageArray = ['image' => $filePath];
+        }
+
+        $post->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
+        }
+
+        return redirect("/show/{$post->id}");
+    }
+
+    public function delete(Post $post)
+    {
+        $this->authorize('update', auth()->user()->profile);
+
+        if(auth()->user()->id == $post->user_id){
+            $post->delete();
+        }
+
+
+        return redirect("/");
     }
 
 }

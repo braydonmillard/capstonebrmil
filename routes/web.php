@@ -28,12 +28,20 @@ Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 Route::get('/show/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
+Route::get('/show/{post}/edit', [App\Http\Controllers\PostsController::class, 'edit'])->name('post.edit');
+Route::patch('/show/{post}', [App\Http\Controllers\PostsController::class, 'update'])->name('post.update');
+
+Route::get('/delete/{post}', [App\Http\Controllers\PostsController::class, 'delete']);
+
 Route::get('/search', [App\Http\Controllers\PostsController::class, 'search']);
 Route::get('/search/{query}/sort', [App\Http\Controllers\PostsController::class, 'sort']);
 
 Route::get('/feature/{post}', [App\Http\Controllers\PostsController::class, 'feature']);
 
 Route::get('/rate/{post}/{rating}', [App\Http\Controllers\PostsController::class, 'rate']);
+Route::post('/review/{post}', [App\Http\Controllers\PostsController::class, 'review']);
+Route::get('/likereview/{review}', [App\Http\Controllers\PostsController::class, 'likereview']);
+
 
 Route::get('/addtomade/{post}', [App\Http\Controllers\PostsController::class, 'addToMade']);
 

@@ -5,12 +5,12 @@
     <h3>{{ $post->title }}</h3><br>
 
     @can('update', $post->user->profile)
-        <a href="/p/edit">Edit Post</a>
+        <a href="/show/{{$post->id}}/edit">Edit Post</a>
         <br>
     @endcan
 
     @can('update', $post->user->profile)
-        <a href="/p/delete">Delete Post</a>
+        <a href="/delete/{{$post->id}}">Delete Post</a>
     @endcan
 
         <div class="row">
@@ -59,19 +59,30 @@
                     </span> <br>
                         </a>
                     <h4>Directions</h4>
-                    {{ $post->instructions }} <br>
+                    {{ $post->instructions }} <br><br>
         
         </div>
                     
                     <h4>Reviews</h4> 
-                    <a href="/addtomade/{{ $post->id }}">Add a Review</a> <br>
                     
                     @if (empty($post->review->first()->comment))
                     There are no reviews yet
                     @else
-                    {{$post->review->first()->comment}}
+                    @foreach($post->review as $review)
+                    <strong>{{$review->username}}</strong> says <br>
+                    {{$review->comment}}
+                    <a href="/likereview/{{$review->id}}"i class="material-icons">thumb_up</i></a> <i>{{ $review->thumbs_up }} likes </i>           
+                    <br> <br>
+                    @endforeach
                     @endif
                     </p>
+
+                    <form action="/review/{{$post->id}}" enctype="multipart/form-data" method="post">
+                    @CSRF
+                    <textarea id="review" name="review" rows="4" cols="50">Add a review </textarea>
+                    <button class="btn btn-primary">Submit</button>
+                    </form>
+
                 </div>
             </div>
 

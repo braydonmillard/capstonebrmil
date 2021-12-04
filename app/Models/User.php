@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Profile::class);
     }
 
+    public function followers()
+    {
+        return $this->hasMany(Profile::class);
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
