@@ -28,7 +28,7 @@ class PostsController extends Controller
 
         $searchQueries = SearchQuery::all();
 
-        $queriesGrouped = DB::table('search_queries')
+        $queriesGrouped = DB::table('searchqueries')
                             ->select('query_text', DB::raw('count(*) as total'))
                             ->groupBy('query_text')
                             ->orderBy('total', 'desc')

@@ -13,7 +13,7 @@ class CreateSearchQueriesTable extends Migration
      */
     public function up()
     {
-        Schema::create(search_queries, function (Blueprint $table) {
+        Schema::create('searchqueries', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->text('query_text');
@@ -28,6 +28,6 @@ class CreateSearchQueriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('search_queries');
+        Schema::dropIfExists('searchqueries');
     }
 }
