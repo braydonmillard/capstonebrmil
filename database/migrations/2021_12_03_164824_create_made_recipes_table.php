@@ -13,7 +13,7 @@ class CreateMadeRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('maderecipes', function (Blueprint $table) {
+        Schema::create('made_Recipes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
@@ -28,6 +28,6 @@ class CreateMadeRecipesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maderecipes');
+        Schema::dropIfExists('made_Recipes');
     }
 }
