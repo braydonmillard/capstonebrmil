@@ -3,31 +3,7 @@
 @section('content')
 <div class="container">
     <h5><i>See what's cooking</i></h5><br>
-<!--
-    <h4>New from users you follow:</h4>
-    @foreach($posts as $post)
-        <div class="row">
-            <div class="col-6 offset-3">
-                <a href="/profile/{{ $post->user->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-75">
-                </a>
-            </div>
-        </div>
-        <div class="row pt-2 pb-4">
-            <div class="col-6 offset-3">
-                <div>
-                    <p>
-                    <span class="font-weight-bold">
-                        <a href="/profile/{{ $post->user->id }}">
-                            <span class="text-dark">{{ $post->user->username }}</span>
-                        </a>
-                    </span> {{ $post->caption }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    @endforeach
--->
+
     <h4>Featured recipes:</h4>
     @foreach($posts as $post)
         @if($post->is_featured == '1')
@@ -94,7 +70,7 @@
 
     @if(Auth::check())
         @if(auth()->user()->is_admin)
-        <h2>Analytics</h2>
+        <h2>Site Metrics</h2>
         
 
     Most searched for terms:
