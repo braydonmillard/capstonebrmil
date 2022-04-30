@@ -77,9 +77,16 @@
                     @endif
                     </p>
 
+                    @if (Auth::check())
                     <form action="/review/{{$post->id}}" enctype="multipart/form-data" method="post">
+                    
+                    @else
+                    <form action="/" enctype="multipart/form-data" method="post">
+
+                    @endif
                     @CSRF
                     <textarea id="review" name="review" rows="4" cols="50">Add a review </textarea>
+                    
                     <button class="btn btn-primary">Submit</button>
                     </form>
 
