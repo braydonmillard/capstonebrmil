@@ -81,7 +81,7 @@
                     <form action="/review/{{$post->id}}" enctype="multipart/form-data" method="post">
                     
                     @else
-                    <form action="/" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('login') }}" enctype="multipart/form-data" method="post">
 
                     @endif
                     @CSRF
