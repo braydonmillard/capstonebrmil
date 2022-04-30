@@ -81,7 +81,7 @@
                     <form action="/review/{{$post->id}}" enctype="multipart/form-data" method="post">
                     
                     @else
-                    <form action="/login.blade.php" method="get">
+                    <form action="/login" method="get">
 
                     @endif
                     @CSRF
