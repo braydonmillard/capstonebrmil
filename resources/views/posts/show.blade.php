@@ -48,6 +48,7 @@
         <a href="/addtomade/{{ $post->id }}" style="border-left: 1px solid #333333;" class="pl-1"> I made it</a>
 
         @else
+        <favourite :post="{{ $post->id }}" :favourited="{{ $post->favourited() ? 'true' : 'false' }} "></favourite>
         <a href="/login" style="border-left: 1px solid #333333;" class="pl-1"> I made it</a>        
 
         @endif
