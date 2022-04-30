@@ -25,16 +25,32 @@
         <div class="row col-6 offset-0"> @if(isset( $post->averaged_rating )) {{ $post->averaged_rating }} @else Not yet Rated @endif/5 </div>
 
         <div class="rating">
+        @if (Auth::check())
             <a href="/rate/{{ $post->id }}/1"><i class="fa fa-star"></i></a>
             <a href="/rate/{{ $post->id }}/2"><i class="fa fa-star"></i></a>
             <a href="/rate/{{ $post->id }}/3"><i class="fa fa-star"></i></a>
             <a href="/rate/{{ $post->id }}/4"><i class="fa fa-star"></i></a>
             <a href="/rate/{{ $post->id }}/5"><i class="fa fa-star"></i></a>
+        
+        @else
+            <a href="/login"><i class="fa fa-star"></i></a>
+            <a href="/login"><i class="fa fa-star"></i></a>
+            <a href="/login"><i class="fa fa-star"></i></a>
+            <a href="/login"><i class="fa fa-star"></i></a>
+            <a href="/login"><i class="fa fa-star"></i></a>
+
+        @endif
         </div>
 
         <div>
+        @if (Auth::check())
         <favourite :post="{{ $post->id }}" :favourited="{{ $post->favourited() ? 'true' : 'false' }} "></favourite>
         <a href="/addtomade/{{ $post->id }}" style="border-left: 1px solid #333333;" class="pl-1"> I made it</a>
+
+        @else
+        <a href="/login" style="border-left: 1px solid #333333;" class="pl-1"> I made it</a>        
+
+        @endif
         </div>
 
         <div>
