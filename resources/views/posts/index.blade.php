@@ -4,7 +4,7 @@
 <div class="container">
     <h5><i>See what's cooking</i></h5><br>
 
-    <h4>Featureed recipes:</h4>
+    <h4>Featureeed recipes:</h4>
     @foreach($posts as $post)
         @if($post->is_featured == '1')
         <div class="row">
