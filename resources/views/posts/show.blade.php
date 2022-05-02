@@ -88,7 +88,13 @@
                     @foreach($post->review as $review)
                     <strong>{{$review->username}}</strong> says <br>
                     {{$review->comment}}
-                    <a href="/likereview/{{$review->id}}"i class="material-icons">thumb_up</i></a> <i>{{ $review->thumbs_up }} likes </i>           
+                    @if(Auth::check())
+                    <a href="/likereview/{{$review->id}}"i class="material-icons">thumb_up</i></a> <i>{{ $review->thumbs_up }} likes </i>
+                    
+                    @else
+                    <a href="/login"i class="material-icons">thumb_up</i></a> <i>{{ $review->thumbs_up }} likes </i>
+
+                    @endif
                     <br> <br>
                     @endforeach
                     @endif
